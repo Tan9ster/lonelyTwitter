@@ -9,6 +9,7 @@ public abstract class Tweet {
     private String message;
     private Date date;
 
+
     public Tweet(String message){
         this.message = message;
     }
