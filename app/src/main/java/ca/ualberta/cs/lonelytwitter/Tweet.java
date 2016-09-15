@@ -9,6 +9,7 @@ import java.util.Date;
 public abstract class Tweet {
     private String message;
     private Date date;
+    private ArrayList<currentMood> moodList;
 
     //constructor that sets user's preferred message as message
     public Tweet(String message, currentMood mood){
