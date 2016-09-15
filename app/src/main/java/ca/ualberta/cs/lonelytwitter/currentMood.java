@@ -5,17 +5,17 @@ import java.util.Date;
 /**
  * Created by john on 2016-09-13.
  */
-public abstract class CurentMood {
+public abstract class currentMood {
 
     private Date date;
     private String mood;
 
-    public CurentMood (String mood){
+    public currentMood(String mood){
         this.mood=mood;
         this.date=new Date();
     }
 
-    public CurentMood (String mood,Date date){
+    public currentMood(String mood, Date date){
         this.mood=mood;
         this.date= date;
 
