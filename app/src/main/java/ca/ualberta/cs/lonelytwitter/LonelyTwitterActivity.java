@@ -2,6 +2,7 @@ package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -26,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class LonelyTwitterActivity extends Activity {
 
-	private static final String FILENAME = "file.sav";
+	private static final String FILENAME = "file.json";
 	private EditText bodyText;
 	private ListView oldTweetsList;
 
@@ -42,6 +43,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
+		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
@@ -55,9 +57,23 @@ public class LonelyTwitterActivity extends Activity {
 				tweetList.add(newTweet);
 				adapter.notifyDataSetChanged();
 
-				saveInFile();
+				saveInFile(); //go to method
 			}
 		});
+
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			//if empty do nothing
+			//else
+			public void onClick (View w){
+				setResult(RESULT_OK);
+				tweetList.clear();
+				adapter.notifyDataSetChanged();
+				//tweetList = new ArrayList<Tweet>();
+				deleteFile(FILENAME);
+
+			}
+		});
+
 	}
 
 	@Override
@@ -90,7 +106,7 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
-	
+
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
@@ -111,4 +127,5 @@ public class LonelyTwitterActivity extends Activity {
 			throw new RuntimeException();
 		}
 	}
+
 }
