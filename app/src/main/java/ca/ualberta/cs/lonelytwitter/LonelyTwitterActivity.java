@@ -1,3 +1,11 @@
+/*
+copyright (c) 2016 team 20, CMPUT 301, university of alberta -All Rights Reserved.
+You man use, distribute, and copy all or parts of this code under terms and conditions of
+University of ALberta and the Code of Student Behavio.
+You can find the copy of licence at .....
+For further information, contat at ...
+ */
+
 package ca.ualberta.cs.lonelytwitter;
 
 import java.io.BufferedReader;
@@ -22,8 +30,17 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * The type Lonely twitter activity.
+ */
+/*
+This is teh main view class of LonelyTwitter prject. It handles all
+user interactions as well as file manipulations.
+ */
 public class LonelyTwitterActivity extends Activity {
-
+/*
+yhid id yhr filr name that is being saved / loaded and contained
+ */
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -38,7 +55,7 @@ public class LonelyTwitterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		bodyText = (EditText) findViewById(R.id.body);
+		//bodyText = (EditText) findViewById(R.id.body);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		/* Create the save, or "Tweet" button. */
@@ -48,7 +65,7 @@ public class LonelyTwitterActivity extends Activity {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
                 bodyText.setText("");
-
+//addTweet(text);
 				Tweet newTweet = new NormalTweet(text);
 
 				tweetList.add(newTweet);
@@ -74,11 +91,16 @@ public class LonelyTwitterActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		loadFromFile();
-		adapter = new ArrayAdapter<Tweet>(this,
+		adapter = new ArrayAdapter<Tweet>(this, //setting list?
 				R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	/*
+	*THis method loads the tweets from FILE_NAME (file.sav), and /...
+	* @throws FileNotFoundException when there is no file
+	* @exception FileNotFound Exception
+	 */
 	private void loadFromFile() {
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -96,7 +118,9 @@ public class LonelyTwitterActivity extends Activity {
 			tweetList = new ArrayList<Tweet>();
 		}
 	}
-	
+	/*
+	this method saves the tweets
+	 */
 	private void saveInFile() {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
