@@ -6,8 +6,8 @@ package ca.ualberta.cs.lonelytwitter;
 public class NormalTweet extends Tweet implements Tweetable {
 /*
 *This constructor makes a normalTweet with given string parameter.
-* @param message this parameter is the givin string for the tweet. If it is se to empty
-* string then it will be replaced by...
+* @param message this parameter is the given string for the tweet. If it is empty
+* string then it will be replaced by tweet message
  */
     public NormalTweet(String message){
         super(message);

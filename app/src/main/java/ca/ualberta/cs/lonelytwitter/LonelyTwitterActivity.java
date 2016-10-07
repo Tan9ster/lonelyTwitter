@@ -34,8 +34,10 @@ import com.google.gson.reflect.TypeToken;
  * The type Lonely twitter activity.
  */
 /*
-This is teh main view class of LonelyTwitter prject. It handles all
-user interactions as well as file manipulations.
+*This is teh main view class of LonelyTwitter project. It handles all
+*user interactions as well as file manipulations.
+* @see saveInFile()
+* @see loadFromFile()
  */
 public class LonelyTwitterActivity extends Activity {
 /*
@@ -91,7 +93,7 @@ yhid id yhr filr name that is being saved / loaded and contained
 	protected void onStart() {
 		super.onStart();
 		loadFromFile();
-		adapter = new ArrayAdapter<Tweet>(this, //setting list?
+		adapter = new ArrayAdapter<Tweet>(this,
 				R.layout.list_item, tweetList);
 		oldTweetsList.setAdapter(adapter);
 	}
@@ -119,7 +121,7 @@ yhid id yhr filr name that is being saved / loaded and contained
 		}
 	}
 	/*
-	this method saves the tweets
+	*this method saves the tweets
 	 */
 	private void saveInFile() {
 		try {
