@@ -21,14 +21,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import static android.R.attr.text;
+import static android.widget.Toast.LENGTH_SHORT;
+
 public class LonelyTwitterActivity extends Activity {
 
 	private Activity activity = this;
-
+    public final static String EXTRA_MESSAGE = "MESSAGE";
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
@@ -74,9 +79,14 @@ public class LonelyTwitterActivity extends Activity {
 
 		oldTweetsList.setOnItemClickListener(new
 				AdapterView.OnItemClickListener(){
+
 					public void onItemClick(AdapterView<?> parent, View view,
 											int position ,long id){
 						Intent intent = new Intent(activity, EditTweetActivity.class);
+
+                        String selected = (parent.getItemAtPosition(position).toString());
+
+                        intent.putExtra(EXTRA_MESSAGE, selected);
 						startActivity(intent);
 					}
 
